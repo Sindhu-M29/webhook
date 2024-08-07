@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout') {
+            steps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    extensions: [],
+                    userRemoteConfigs: [[credentialsId: 'Git-token', url: 'https://github.com/Sindhu-M29/drupalnew.git']]
+                ])
+            }
+        }
+    }
+}
